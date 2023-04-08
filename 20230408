@@ -1,0 +1,29 @@
+
+#공원 산책
+#172928
+def solution(park, routes):
+    x=0
+    y=0
+    for i in range(len(park)):
+        if 'S' in park[i]:
+            # start = [i, park[i].find('S')]
+            x=i
+            y=park[i].find('S')
+            break
+    for j in routes:
+        direction=j[0]
+        moving=int(j[-1])
+        if direction == "E":
+            x-=moving
+        elif direction == "W":
+            x+=moving
+        elif direction == "N":
+            y-=moving
+        else:
+            y+=moving
+
+
+
+solution(["SOO",
+          "OXX",
+          "OOO"],["E 2","S 2","W 1"])
