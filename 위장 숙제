@@ -1,0 +1,16 @@
+
+#위장
+#42578
+def solution(clothes):
+    Dict={}
+    answer = 1
+    for wear, type in clothes:
+        Dict[type] =  Dict.get(type,0)+1 #value 값의 type이 같다면 1을 더한다 없다면 value값을 0으로 둔다
+    for type in Dict:
+        answer*=Dict[type]+1    #그종류를 하나도 안입은 경우의 수
+    answer-=1  #
+
+    return answer
+
+
+print(solution([['yellow_hat', 'headgear'], ["blue_sunglasses", "wear"], ["green_turban", "headgear"]]))
