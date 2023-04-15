@@ -1,0 +1,58 @@
+
+# #위장
+# #42578
+# def solution(clothes):
+#     Dict={}
+#     tmp = 1
+#     for wear, type in clothes:
+#         Dict[type] =  Dict.get(type,0)+1
+#     print(Dict)
+#
+#     for type in Dict:
+#         tmp*=Dict[type]+1    #그종류의 옷을 안입은 경우의 수
+#     tmp-=1
+#
+#     return tmp
+#
+#
+#  print(solution([['yellow_hat', 'headgear'], ["blue_sunglasses", "wear"], ["green_turban", "headgear"]]))
+
+
+#달리기 경주
+# def solution(players, callings):
+#     player_rank={}
+#     rank_player={}
+#     for i in range(len(players)):
+#         rank_player[i+1] = player_rank[i]
+#         player_rank[players[i]]=i+1
+#
+#     for call in  callings:
+#         rank = player_rank[call]
+#         downplayer=rank_player[rank-1]
+#         rank_player[rank-1],rank_player[rank]=call,downplayer
+#         player_rank[call],player_rank[downplayer]=rank-1,rank
+#         print("rank_player:",rank_player)
+#         print("player_rank :",player_rank)
+#
+#
+#
+#
+#
+# print(solution(["mumu", "soe", "poe", "kai", "mine"],["kai", "kai", "mine", "mine"]))
+
+
+
+
+#점프와 순간이동 12980
+def solution(n):
+    ans=0
+    while n:
+        if n%2==0:
+            n/=2
+        else:
+            n-=1
+            ans+=1
+
+    return ans
+
+print(solution(5))
