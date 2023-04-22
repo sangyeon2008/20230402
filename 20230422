@@ -1,0 +1,81 @@
+# 20230402
+# #점프와 순간이동 12980
+# def solution(n):
+#     ans=0
+#     while n:
+#         if n%2==0:
+#             n//=2
+#         else:
+#             n-=1
+#             ans+=1
+#
+#     return ans
+#
+# print(solution(5))
+def How_much(minutes,fees):
+    total_fee=0
+    if minutes <= fees[0]:
+        total_fee=fees[1]
+    else:
+        if (minutes-fees[0]) %fees[2] == 0:
+            total_fee=((minutes - fees[0])//fees[2])*fees[3]+fees[1]
+        else:
+            total_fee = ((minutes - fees[0]) // fees[2]) * fees[3] + fees[1]+fees[3]
+    return total_fee
+
+def solution(fees,records):
+    answer=[]
+    intime={}
+    parking={}
+    for record in records:
+        time, number, log =record.split()
+        hour, minute = time.split(":")
+        minutes = int(hour)*60 + int(minute)
+        if log == 'IN':
+            intime[number]=minutes
+        else:
+            x=minutes-intime[number]#이용시간
+            if number in parking:
+                parking[number]+=x
+            else:
+                parking[number] = x
+
+            del intime[number]
+
+    for number, minute in intime.items():
+        if number not in parking:
+            parking[number] = 23*60+59-minute
+        else:
+            parking[number] += 23 *60 +59 -minute
+
+
+    for number,time in sorted(parking.items()):
+        answer.append(How_much(time,fees))
+
+    return answer
+
+    # 55000 + ⌈(334 - 180) / 10⌉ x 600 = 14600
+
+
+
+fees=[180, 5000, 10, 600]
+records=["05:34 5961 IN",
+         "06:00 0000 IN",
+         "06:34 0000 OUT",
+         "07:59 5961 OUT",
+         "07:59 0148 IN",
+         "18:59 0000 IN",
+         "19:09 0148 OUT",
+         "22:59 5961 IN",
+         "23:00 5961 OUT"]
+print(solution(fees,records))
+
+
+
+#땅따먹기 12913
+def solution(land):
+    for i in land:
+        
+        
+
+print(solution([[1,2,3,5],[5,6,7,8],[4,3,2,1]]))
