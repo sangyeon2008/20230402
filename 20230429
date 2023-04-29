@@ -1,0 +1,83 @@
+#땅따먹기 12913
+# def solution(land):
+#     tmp=[]
+#     answer=0
+#     answer1=0
+#     ANSWER=0
+#     ANSWER1=0
+#     for i in (land):
+#         # for j in (land,i):
+#         land,i.sort()
+#         tmp.append(i[-1]-i[-2])
+#
+#     for j in range(1,len(land)+1):
+#         if j%2==0:
+#             answer+=tmp[j]
+#             answer1+=land[j][-1]
+#             answer1+=land[j+1][-2]
+#
+#         else:
+#             ANSWER+=tmp[j]
+#             ANSWER1+=land[j][-1]
+#             ANSWER1+=land[j+1][-2]
+#     print(answer,ANSWER)
+#
+#     if answer-ANSWER<0:
+#         return ANSWER1
+#     else:
+#         return answer1
+#
+#
+# print(solution([[1,2,3,5],
+#                 [5,6,7,8],
+#                 [4,3,2,1]]))
+
+# #땅따먹기 12913
+# def solution(land):
+#     for i in range(1,len(land)):
+#         for j in range(len(land[i])):
+#             land[i][j] += max(land[i-1][:j] + land[i-1][j+1:])
+#     return max(land[-1])
+#
+# land=[[1,2,3,5],
+#        [5,6,7,8],
+#        [4,3,2,1]]
+# print(solution(land))
+
+# 뉴스 클러스터링
+# 17677
+def J(set1,set2):
+    one=0
+    two=0
+    for i in range(len(set1)):
+        if set1[i] in set2:
+            del set1[i]
+            one+=1
+
+#
+
+
+
+def solution(str1, str2):
+    str1=str1.lower()
+    str2=str2.lower()
+    set1=[]
+    set2=[]
+    for i in range(len(str1)-1):
+        part= str1[i:i+2]
+        if part.isalpha():
+            set1.append(part)
+    for i in range(len(str2)-1):
+        part = str2[i:i+2]
+        if part.isalpha():
+            set2.append(part)
+
+
+
+
+    return int(J(set1,set2)*65536)
+
+
+str1="FRANCE"
+str2="french"
+print(solution(str1, str2))
