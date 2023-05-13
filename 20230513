@@ -1,0 +1,71 @@
+# 20230402
+# def J(A,B):
+#     if A==B==[]: return 1
+#     intersection = 0
+#     union = 0
+#     for i in set(A):
+#         intersection += min(A.countt(i),B.count(i))
+#     for i in set(A):
+#         union += max(A.count(i),B.count(i))
+#     for i in set(B):
+#         if i not in A:
+#             union += B.count(i)
+#     return intersection/union
+#
+#
+# def solution(str1,str2):
+#     str1 = str1.upper()
+#     str2 = str2.upper()
+#     A=[]
+#     B=[]
+#     for i in range(len(str1)-1):
+#         x=(str1[i]+str1[i+1])
+#         if x.isalpha():
+#             A.append(x)
+#     for i in range(len(str2)-1):
+#         x=(str2[i]+str2[i+1])
+#         if x.isalpha():
+#             B.append(x)
+#     return int(J(A,B)*65536)
+
+
+
+# def ret_GCD(A,B):
+#     while B != 0:
+#         A,B = B,A % B
+#     return A
+#
+# def solution(arr):
+#     A = arr.pop(0)
+#     B = arr.pop(0)
+#     A = A * B / ret_GCD(A,B)
+#     while arr:
+#         B = arr.pop(0)
+#         A= A * B/ ret_GCD(A,B)
+#     return int(A)
+#arr=[2,6,8,14]
+# print(solution(arr))
+
+
+#n진수 게임 17687
+# i = 10
+# base_n = 2
+# result=''
+# while i :
+#     result += str(i % base_n)
+#     i //= base_n
+# print(result[::-1])
+
+def con(num,base):
+    temp = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+    q,r =divmod(num, base)
+    if q ==0:
+        return temp[r]
+def solution(n,t,m,p):
+    answer=''
+    test=''
+    for i in range(m*t):
+        test+=str
+
+
+print(solution(2,4,2,1))
