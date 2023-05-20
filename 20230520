@@ -1,0 +1,72 @@
+# 20230402
+#n진수 게임 17687
+
+# def solution(n,t,m,p):
+#     convert= ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+#     answer=''
+#     curr = 0
+#     i =0
+#     while True:
+#         base_n = ''
+#         number = i
+#         base_n += convert[number % n]
+#         number //=n
+#         if number == 0: break
+#     for b in base_n[::-1]:
+#         if curr == p-1:
+#             answer += b
+#         curr += 1
+#         curr = curr % m
+#         if len(answer)==t:
+#             return answer
+#     i += 1
+# print(solution(2,4,2,1))
+
+
+# def solution(n, left, right):
+#     x=0
+#     y=0
+#     matrix=[]
+#     for i in range(3):
+#         temp =[]
+#         for j in range(3):
+#             temp.append(max(i,j)+1)
+#         matrix.append(temp)
+#     new_matrix
+
+# def solution(n, left, right):
+#     answer = []
+#     for i in range(left, right+1):
+#         temp = []
+#         temp.append(i//n)
+#         temp.append(i%n)
+#         print(temp)
+#         answer.append(max(temp) + 1)
+#     return answer
+#
+#
+#
+# print(solution(3,2,5))
+# #1,2,3
+# #2,2,3
+# #3,3,3
+
+
+def solution(msg):
+    alphabet={'A':1,'B':2,'C':3,'D':4,'E':5,'F':6,'G':7,'H':8,'I':9,'J':10,'K':11,'L':12,'M':13,'N':14,'O':15,'P':16,'Q':17,'R':18,'S':19,'T':20,'U':21,'V':22,'W':23,'X':24,'Y':25,'Z':26}
+    answer=[]
+    for i in range(len(msg)):
+        for j in range(len(msg)):
+            if alphabet[msg[i]] not in answer:
+                answer.append(alphabet[msg[i]])
+
+            elif msg[i] not in alphabet:
+                alphabet[msg[i]+j]=alphabet[-1]+1
+                answer.append(alphabet[msg[i]+j])
+
+            else:
+                pass
+    return answer
+
+
+print(solution("KAKAO"))
