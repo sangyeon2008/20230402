@@ -1,0 +1,98 @@
+# 20230402
+#
+# def solution(msg):
+#     alphabet={'A':1,'B':2,'C':3,'D':4,'E':5,'F':6,'G':7,'H':8,'I':9,'J':10,'K':11,'L':12,'M':13,'N':14,'O':15,'P':16,'Q':17,'R':18,'S':19,'T':20,'U':21,'V':22,'W':23,'X':24,'Y':25,'Z':26}
+#     n=27
+#     answer=[]
+#     for i in range(len(msg)):
+#         for j in range(len(msg)):
+#             if alphabet[msg[i]] not in answer:
+#                 answer.append(alphabet[msg[i]])
+#
+#             elif msg[i] in answer:
+#                 i=i+j
+#                 if msg[i] not in alphabet:
+#                     alphabet[msg[i-j:i]] = n
+#                     n+=1
+#             else:
+#                 pass
+#     return answer
+#
+#
+# print(solution("KAKAO"))
+
+
+# def solution(msg):
+#     answer = []
+#     Dict= dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ",range(1,27)))
+#     num = 27
+#     i = 0
+#     while i < len(msg):
+#         j=i+1
+#         while msg[i:j] in Dict:
+#             j+=1
+#             if j > len(msg):
+#                 break
+#         if msg[i:j]not in Dict:
+#             Dict[msg[i:j]]=num
+#         num += 1
+#         answer.append(Dict[msg[i:j-1]])
+#         i=j-1
+#     return answer
+
+
+# file=["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"]
+# file.sort(key=lambda)
+# print(file)
+
+
+# def solution(files):
+#     H_N_F = []
+#     answer=[]
+#     for file in files:
+#         HEAD = ''
+#         NUMBER= ''
+#         for i in range(len(file)):
+#             if file[i].isdigit():
+#                 HEAD = file[:i]
+#                 j=i
+#                 while file[j].isdigit():
+#                     j+=1
+#                     if j >= len(file):
+#                         break
+#                 NUMBER =file[i:j]
+#                 break
+#         H_N_F.append([HEAD.lower,int(NUMBER),file])
+#     H_N_F.sort(key = lambda x: x[:2])
+#     for hnf in H_N_F:
+#         answer.append(hnf[-1])
+#     return answer
+#
+#
+#
+#
+#
+# print(solution(["img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"]))
+
+
+
+def solution(book_time):
+    time=[]
+    book_minute = [(int(s[:2]) * 60 + int(s[3:]), int(e[:2]) * 60 + int(e[3:])) for s, e in book_time]
+    book_time.sort()
+    print(book_minute)
+    time.append(book_minute[0])
+    del book_minute[0]
+    
+    for i in book_minute:
+        for j in time:
+            if i[0] > j[-1]+10:
+                time.append(i)
+                del j
+            else:
+                time.append(i)
+    return len(time)
+
+
+
+print(solution([["15:00", "17:00"], ["16:40", "18:20"], ["14:20", "15:20"], ["14:10", "19:20"], ["18:20", "21:20"]]))
