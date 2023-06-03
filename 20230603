@@ -1,0 +1,61 @@
+# 20230402
+# def solution(book_time):
+#     time = []
+#     book_time =[(int(s[:2]) * 60 + int(s[3:]), int(e[:2]) * 60 + int(e[3:])) for s, e in book_time]
+#     print(book_time)
+#     time.append(book_time[0])
+#     del book_time[0]
+#
+#     for i in book_time:
+#         for j in time:
+#             if i[0] >= j[-1] + 10:
+#                 time.append(i)
+#                 time.remove(j)
+#             else:
+#                 print(time)
+#                 time.append(i)
+#     return len(time)
+#
+#
+# print(solution([["15:00","17:00"], ["16:40","18:20"], ["14:20", "15:20"], ["14:10", "19:20"], ["18:20", "21:20"]]))
+#
+# def solution(book_time):
+#     for i in range(len(book_time)):
+#         for j in range(len(book_time[i])):
+#             h,m = book_time[i][j].split(':')
+#             minute=int(h)*60 + int(m)
+#             book_time[i][j] = minute
+#     book_time.sort()
+#     out_time=[]
+#     for IN,OUT in book_time:
+#         if not book_time:
+#             book_time.append(OUT+10)
+#         else:
+#             for i in range(len(out_time)):
+#                 if out_time[i] <= IN:
+#                     out_time[i]= OUT + 10
+#                     break
+#             else:
+#                 out_time.append(OUT + 10)
+#     return len(out_time)
+#
+#
+#
+# print(solution([["15:00", "17:00"], ["16:40", "18:20"], ["14:20", "15:20"], ["14:10", "19:20"], ["18:20", "21:20"]]))
+# capitalize
+# def mystrip(string: str, substr: str = ' '):
+#     l=0
+#     r=len(string)-1
+#     while string[l] == substr:
+#         l+= 1
+#         if l >= len(string):
+#             break
+#     while string[r] == substr:
+#         r-=1
+#         if r<0:
+#             break
+#     return string[l:r+1]
+# a='..str.ip....'
+# print(mystrip(a,'.'))
+
+  
