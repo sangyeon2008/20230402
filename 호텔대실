@@ -1,0 +1,20 @@
+# 20230402
+def solution(book_time):
+    time = []
+    book_times = [(int(s[:2]) * 60 + int(s[3:]), int(e[:2]) * 60 + int(e[3:])) for s, e in book_time]
+    print(book_time)
+    print(book_times)
+    time.append(book_times[0])
+    del book_times[0]
+
+    for i in book_times:
+        for j in time:
+            if i[0] > j[-1] + 10:
+                time.append(i)
+                del j
+            else:
+                time.append(i)
+    return len(time)
+
+
+print(solution([["15:00", "17:00"], ["16:40", "18:20"], ["14:20", "15:20"], ["14:10", "19:20"], ["18:20", "21:20"]]))
