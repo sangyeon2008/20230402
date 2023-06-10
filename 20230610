@@ -1,0 +1,39 @@
+# 20230402
+# def solution(storey):
+#     stone=0
+#     while storey:
+#         n=storey % 10
+#         nn=storey // 10%10
+#         if n==5 and nn>=5 or n > 5:
+#             stone +=10 -n
+#             storey +=10 -n
+#         else:
+#             stone +=n
+#         storey //=10
+#     return stone
+#
+#
+# storey=16
+#
+# print(solution(storey))
+# a="hello world"
+#
+# for i in range:
+#     print(i,end='')
+
+
+
+class Test:
+    #생성자 함수 __init__은 클래스로 객체 생성시 가장 먼저 실해되는 함수
+    #가장 먼저 실행된다 => 클래스에 생성할 객체에 필요한 정보를 넘기는데 주로 사용
+    def __init__(self,a):
+        print("생성자 함수 실행")
+        print(a)
+
+    def func(self):
+        print("메서드")
+
+
+t = Test(1)   #TEST 클래스를 이용해서 t라는 객체를 만듬
+            #t객체는 TEST클래스의 인스턴스이다.
+t.func()
