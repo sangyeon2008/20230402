@@ -1,0 +1,85 @@
+# 20230402
+#식별자: 변수나 함수의 이름
+#영어 대소문자 구분
+#숫자 붙일 수 있다. 단, 맨 앞은 안된다
+#특수문자 가능한 것은 '_'만 가능
+# class Test:
+#     def __init__(self,a):
+#         self.a = a
+#         print(self.a)
+#         # print("생성자 함수 실행")
+#
+# t1 = Test(3)
+# t2 = Test(4)
+# print(t1.a)
+# print(t2.a)
+
+
+# class Country:
+#     def __init__(self,name):
+#         self.name = name
+#         self.manager = None
+#         self.players = []
+#     def introduce(self):
+#         print("이 클래스는 국가를 의미하는 클래스입니다.")
+#
+# class KOREA(Country):
+#     def introduce(self):
+#         print(f"{self.name} 대표팀 감독은{self.manager}이고, 대표선수로는{self.payers}가 있다")
+#     def input_info(self,manager,*players):
+#         self.manager = manager
+#         for p in players:
+#             self.players.append(p)
+# kr = KOREA("대한민국")
+# print(kr.name)
+# kr.input_info('클린스만',"손흥민","이강인","김민재")
+# kr.introduce()
+#
+#
+# class mystr(str):
+#     def __init__(self,string):
+#         self.mystring = string
+#     def __add__(self,other):
+#         return (self.mystring + other) *2
+#     def __sub__(self, other):
+#         result=""
+#         length = len(other)
+#         for s in range(len(self.mystring)):
+#             if self.mystring[s:s+length] not in other:
+#                 result += s
+#         return result
+# s=mystr("Hello World")
+# x="o"
+# x2='l'
+# print(s-x)
+# print(s-x2)
+
+
+
+def solution(A,B,C):
+    if A==0:
+        return("A는 0이 될 수 없습니다.")
+    else:
+        if (B ** 2 - 4 * A * C) ** (1 / 2)<0: #해가 없을때
+            return "해가 없습니다."
+        answer1=(-B+(B**2-4*A*C)**(1/2))/2*A
+        answer2=(-B-(B**2-4*A*C)**(1/2))/2*A
+        if answer1==answer2: #중근
+            return f"({int(answer1)})**2"
+        else:
+            if answer1*-1>0 and answer2*-1>0:
+                return f'(x+{int(answer1)*-1}),(x+{int(answer2)*-1})'
+
+            elif answer1*-1<0 and answer2*-1>0:
+                return f'(x{int(answer1)*-1}),(x+{int(answer2)*-1})'
+
+            elif answer1*-1>0 and answer2*-1<0:
+                return f'(x+{int(answer1)*-1}),(x{int(answer2)*-1})'
+
+            else:
+                return f'(x{int(answer1)*-1}),(x{int(answer2)*-1})'
+A,B,C=map(int,input().split())
+print(solution(A,B,C))
+
+
+# 12 32
