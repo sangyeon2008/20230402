@@ -1,0 +1,106 @@
+# 20230402
+# # low: 가장 왼쪽 좌표
+# # high: 가장 오른쪽 좌표
+# # middle:가운데 좌표(소수점일시 소수점 지움)
+#
+# import random
+# arr= []
+# while len(arr) < 20:
+#     x = random.randint(0,100)
+#     if x not in arr:
+#        arr.append(x)
+#
+# def Binary_search():
+#     arr.sort()
+#     low = 0
+#     high = len(arr)-1
+#     cnt=0
+#     while low <= high:
+#         middle = (low + high)//2
+#         if arr[middle] < target:
+#             low = middle + 1
+#         elif arr[middle] > target:
+#             high =middle - 1
+#         else:
+#             print(f"{target}은 arr의 {middle}번째에 존재합니다. 시도횟수:{cnt}")
+#             break
+#     else:
+#         print(f"arr에는 {target}이 존재하지 않는다.")
+#     # middle = (low+high)//2
+#     # if middle == target:
+#     #     return f"{target}은 arr의 {middle}번째에 존재합니다."
+#     #
+#     # elif target > middle:
+#     #     for i in range(len(arr)):
+#     #         low = middle + 1
+#     #         middle = (low+high)//2
+#     #         if middle == target:
+#     #             return f"{target}은 arr의 {middle}번째에 존재합니다."
+#     #         elif target > middle:
+#     #             low = middle + 1
+#     #             middle = (low + high) // 2
+#     #         else:
+#     #             high = middle -1
+#     #             middle = (low + high) // 2
+#
+#
+#
+#
+#
+# print(f"arr={arr}")
+# target = int(input("찾고자 하는 값을 입력하시오: "))
+# Binary_search(arr,target)
+
+
+class Hanglenum:
+    def __init__(self,data):
+        if type(data) not in [str,int]:
+            raise Exception("정수나 문자열을 입력할 수 있습니다.")
+        self.num = data
+
+
+    def __str__(self):
+        if type(self.num) == str:
+            return self.num
+        if self.num == 0:
+            return '영'
+
+
+        int_num = self.num
+        str_num = ""
+
+        digit_list = ["",'일','이','삼','사','오','육','칠','팔','구']
+
+        low_part_list = {1:"",10:"십",100:"백",1000:"천"}
+        high_part_list = {1:'',10000:"만",100000000:"억",1000000000000:"조"}
+        max_part_div = 1000000000000
+
+        high_part_div = max_part_div
+        while int_num:
+            string = ''
+            low_part_div=1000
+            part = int_num//high_part_div
+            if part == 0:
+                int_num %= high_part_div
+                high_part_div //= 10000
+                continue
+
+            while part:
+                digit=part // low_part_div
+                if digit:
+                    if low_part_div == 1 or digit != 1:
+                        string += digit_list[digit]
+                    string += low_part_list[low_part_div]
+                    part %= low_part_div
+                low_part_div//=10
+
+            str_num+=string
+            str_num += high_part_list[high_part_div]
+            int_num%=high_part_div
+            high_part_div //= 10000
+        return str_num
+
+
+
+num = Hanglenum(123456789)
+print(str(num))
