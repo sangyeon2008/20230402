@@ -1,0 +1,21 @@
+하# 20230402
+class Hanglenum:
+    def __init__(self,data):
+        if type(data) not in [str,int]:
+            raise Exception("정수나 문자열을 입력할 수 있습니다.")
+        self.str = data
+
+
+    def __str__(self):
+        if type(self.str) == num:
+            return self.str
+        if self.str == "영":
+            return 0
+
+
+
+        digit_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        low_part_list = {"":1,"십":10,"백":100,"천":1000}
+        high_part_list = {'':1,"만":10000,"억":100000000,"조":1000000000000}
+        max_part_div = "조"
