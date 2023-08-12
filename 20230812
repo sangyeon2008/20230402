@@ -1,0 +1,202 @@
+2023# 20230402
+# #한글을 숫자로 바꿈
+# class koreannum:
+#     def __init__(self,num):
+#         self.num = num
+#
+#     def int(self):
+#         x= {"일":1,'이':2,"삼":3,'사':4,'오':5,'육':6,'칠':7,'팔':8,'구':9}
+#         lowparts = {"천":1000,"백":100,"십":10}
+#         if strnum[lowparts.values()-1]
+#
+# strnum = "천이백십삼"
+# print(int(strnum))
+
+
+# class Hanglenum:
+#     def __init__(self,data):
+#         if type(data) not in [str,int]:
+#             raise Exception("정수나 문자열을 입력할 수 있습니다.")
+#         self.str = data
+#
+#
+#     def __str__(self):
+#         if type(self.int) == num:
+#             return self.int
+#         if self.int == "영":
+#             return 0
+#
+#
+#
+#         digit_list = ['1, 2, 3, 4, 5, 6, 7, 8, 9]
+#
+#         low_part_list = {"":1,"십":10,"백":100,"천":1000}
+#         high_part_list = {'':1,"만":10000,"억":100000000,"조":1000000000000}
+#         max_part_div = "조"
+#
+#         high_part_div = max_part_div
+#         while int_num:
+#             string = ''
+#             low_part_div=1000
+#             part = int_num//high_part_div
+#             if part == 0:
+#                 int_num %= high_part_div
+#                 high_part_div //= 10000
+#                 continue
+#
+#             while part:
+#                 digit=part // low_part_div
+#                 if digit:
+#                     if low_part_div == 1 or digit != 1:
+#                         string += digit_list[digit]
+#                     string += low_part_list[low_part_div]
+#                     part %= low_part_div
+#                 low_part_div//=10
+#
+#             str_num+=string
+#             str_num += high_part_list[high_part_div]
+#             int_num%=high_part_div
+#             high_part_div //= 10000
+#         return str_num
+# num = Hanglenum(123456789)
+# print(str(num))
+
+
+
+
+
+# class number:
+#     def __init__(self, data):
+#         if type(data) not in [str, int]:
+#             raise Exception("정수나 문자열을 입력할 수 있습니다.")
+#         self.num = data
+
+
+# class Hanglenum:
+#     def __init__(self, data):
+#         if type(data) not in [str, int]:
+#             raise TypeError("정수나 문자열을 입력할 수 있습니다.")
+#         self.num = data
+#
+#
+# class Hanglenum:
+#     def __init__(self, data):
+#         if type(data) not in [str, int]:
+#             raise TypeError("정수나 문자열을 입력할 수 있습니다.")
+#         self.num = data
+# def __str__(self):
+#         if type(self.num) == str:
+#             return self.num
+#         if self.num == 0:
+#             return '영'
+#         sign = ""
+#         if self.num < 0:
+#             sign = "마이너스"
+#             self.num *= -1
+#         int_num = self.num
+#         str_num = ""
+#         # 숫자
+#         digit_list = ["", "일", "이", "삼", "사", "오", "육", "칠", "팔", '구']
+#         # 십 ~ 천 단위
+#         low_part_list = {1: "", 10: "십", 100: "백", 1000: "천"}
+#         # 만 ~ 조 단위
+#         high_part_list = {1: '', 10000: '만', 100000000: '억', 1000000000000: "조"}
+#         max_part_div = 1000000000000 # 최대 단위
+#         high_part_div = max_part_div  # 최대 단위부터 시작
+# while int_num:
+#             string = ""  # 천의 단위를 담아줄 문자열 변수
+#             low_part_div = 1000
+#             part = int_num // high_part_div  # 받은 숫자값을 천의 단위로 끊어 읽는다.
+#             # -------- 단위보다 작으면 다음 단위로 넘어간다. --------
+#             if part == 0:
+#                 int_num %= high_part_div
+#                 high_part_div //= 10000
+#                 continue
+#             # --------- 천의 단위 계산 ---------
+#             while part:
+#                 digit = part // low_part_div
+#                 if digit:
+#                     if low_part_div == 1 or digit != 1:
+#                         string += digit_list[digit]  # 숫자 더해주기
+#                     string += low_part_list[low_part_div]  # 단위 더해주기
+#                     part %= low_part_div
+#                 low_part_div //= 10
+#             # --------- 계산 끝난 천의 단위 str_num에 담아주기 ---------
+#             str_num += string
+#             str_num += high_part_list[high_part_div]
+#             int_num %= high_part_div
+#             high_part_div //= 10000
+#         return sign + str_num
+# def __int__(self):
+#         if type(self.num) == int:
+#             return self.num
+#         if self.num == '영':
+#             return 0
+#         sign = 1
+#         if '마이너스' in self.num:
+#             sign = -1
+#             self.num = self.num[4:]
+#
+#         str_num = self.num
+#
+#         int_num = 0  # return 값
+#         kr_num = {'일': 1, '이': 2, '삼': 3, '사': 4, '오': 5, '육': 6, '칠': 7, '팔': 8, '구': 9}
+#         parts = {'십': 10, '백': 100, '천': 1000,"만":10000,'억':100000000, '조':1000000000000}  # 10 ~ 조
+#         high_part = 1   # 만, 억, 조
+#         part = 1  # 현재 수의 단위
+#         digit = 1  # 현재 수의 값
+# for s in str_num[::-1]:
+#             # 현재 s가 숫자 값이라면
+#             if s in kr_num:
+#                 digit = kr_num[s]
+#             # 현재 s가 단위라면
+#             elif s in parts:
+#                 # 이전에 나온 값들을 더해준 뒤 단위 변경
+#                 if part != 1 and digit == 0:
+#                     digit = 1
+#                 # 계산값 더하기
+#                 int_num += high_part * part * digit
+#                 digit = 0
+#                 if s in "만억조":
+#                     high_part = parts[s]
+#                     part = 1
+#                 else:
+#                     part = parts[s]
+#         if digit == 0:
+#             digit = 1
+#         int_num += high_part * part * digit
+#         return sign * int_num
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 구명보트 42885
+def solution(people, limit):
+    answer = 0
+    people.sort(reverse=True)
+    for i in range(people):
+        for j in range(people-people[i]):
+            if people[i] + people[j] <= limit:
+                answer+=1
+                people.remove(people[i])
+                people.remove(people[j])
+            else:
+                answer+=1
+                people.remove(people[i])
+                
+
+
+
+
+    return answer
+
+print(solution([70, 50, 80, 50],100))
