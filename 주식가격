@@ -1,0 +1,20 @@
+# 20230402
+# 42584
+def solution(prices):
+    answer = []
+    for i in range(len(prices)):
+        add=i+1
+        while prices[i] >= prices[i+add] or i+add<len(prices):
+            if prices[i] >= prices[i+add]:
+                add+=1
+                print(add)
+        else:
+            answer.append(add-i)
+    return answer
+
+
+
+
+
+
+print(solution([1, 2, 3, 2, 3]))
