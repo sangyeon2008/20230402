@@ -1,0 +1,103 @@
+# 20230402
+# # 42584
+# def solution(prices):
+#     answer = []
+#     for i in range(len(prices)):
+#         add=i+1
+#         while prices[i] >= prices[i+add] or i+add<len(prices):
+#             if prices[i] >= prices[i+add]:
+#                 add+=1
+#
+#         answer.append(add-i)
+#
+#     return answer
+#
+# print(solution([1, 2, 3, 2, 3]))
+
+
+class calculator:
+    def __init__(self,data=0):
+
+
+    def __add__(self, other):
+        self.rec += f"{self.data} + {other} = {self.data + other}\n"
+
+    def __sub__(self, other):
+        return self.data - other.data
+
+    def __mul__(self, other):
+        return self.data /other.data
+
+
+
+
+
+cal1=calculator(5)
+print(cal1 + 10)
+print(cal1 - 2)
+print(cal1 * 3)
+print(cal1 / 2)
+print(cal1.get_rec())
+print(cal1.clear())
+print(cal1.get_rec)
+
+
+
+
+class Animal:
+    def __init__(self,name):
+        self.name = name
+
+class Dog(Animal):
+    def __init__(self,name):
+        self.울음소리 = "멍멍"
+        self.희귀도  = "low"
+
+class Wolf(Animal):
+    pass
+
+dog = Dog("비숑")
+wolf = Wolf("늑대")
+print(wolf.name)
+wolf.울음소리 = "아우우우"
+wolf.희귀도 = "HiGH"
+wolf.나이 = "10살"
+print(wolf.희귀도)
+print(wolf.울음소리)
+print(wolf.나이)
+print(dog.나이)
+
+
+class STUDENT:
+    def __init__(self,name,age,num):
+        self.name = name
+        self.age = age
+        self.num = num
+class CLASS:
+    def __init__(self,teacher):
+        self.teacher = teacher
+        self.students = []
+
+    def imput_side(self,student):
+        self.students.append(student)
+
+class SCHOOL
+    def __init__(self):
+        self.g1 = []
+        self.g2 = []
+        self.g3 = []
+
+    def imput_class(self,Class,n):
+        if n == 1
+            self.g1.append(Class)
+        elif n == 2:
+            self.g2.append(Class)
+        else:
+            self.g3.append(Class)
+
+s1 = STUDENT("홍길동",19,1)
+c1 = CLASS("박찬빈")
+c1.input_stds(s1)
+중흥고 = SCHOOL()
+중흥고.input_class(c1,3)
+print(중흥고.g3[0].students[0].name)
