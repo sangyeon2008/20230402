@@ -1,0 +1,46 @@
+# #백준 화학식량 2257
+# #수소(H):1, 탄소(C):12, 산소(O): 16
+# x=input()
+# chemical = []
+# sign = {"H":1, "C": 12, "O":16}
+# for i in x:
+#     if i=="(":
+#         while i!=")":
+#             if i in "HCO":
+#                 i = sign.values()
+#             elif i.isdigit():
+#                 chemical.append(int(x.index(i)-1) * i)
+#     else:
+#         if i == i in "HCO":
+#             i = sign.values()
+#         elif i.isdigit():
+#             chemical.append(int(x.index(i) - 1) * i)
+#
+#
+# print(chemical)
+
+import sys
+input = sys.stdin.readline
+
+evaluation = input().rstrip()
+atom = {"H":1, "C": 12, "O":16}
+stack = []
+
+for ev in evaluation:
+    if ev == "(":
+        stack.append(ev)
+    elif ev == ")":
+        summery = 0
+
+        while True:
+            st = stack.pop()
+            if st == "(":
+                break
+            summery += st
+        stack.append(summery)
+    elif ev in atom:
+        stack.append(atom[ev])
+    else:
+        stack[-1] *= int(ev)
+
+print(sum(stack))
