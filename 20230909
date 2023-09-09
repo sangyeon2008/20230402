@@ -44,3 +44,7 @@ for ev in evaluation:
         stack[-1] *= int(ev)
 
 print(sum(stack))
+
+
+
+#12909
