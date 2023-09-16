@@ -1,0 +1,59 @@
+# def solution(s):
+#     for i in range(len(s)):
+#         for j in range(len(s)):
+#             if s[i] == "(":
+#                 if s[j] == ")":
+#                     s = s.replace(s[i],'')
+#                     s = s.replace(s[j], '')
+#
+#     if len(s) == 0:
+#         return True
+#     else:
+#         return False
+#
+# print(solution("()()"))
+
+
+# def solution(s):
+#      stack = []
+#      for i in s:
+#          if stack ==[] or i == '(':
+#              stack.append(i)
+#          elif stack[-1] == "(" and i == ')':
+#              stack.pop()
+#      return len(stack) == 0
+# print(solution("()()"))
+
+
+
+#백준 큐2 10845
+#힌트 start end
+start =
+end = 
+queue = []
+import sys
+input = sys.stdin.readline
+n = int(input())
+for _ in range(n):
+    order= input().split()
+    if order[0] =='push':
+        queue.append(order[1])
+    elif order[0] == 'pop':
+        if queue:
+            print(queue.pop(0))  #실제로 뽑으면 안됨
+        else:
+            print(-1)
+    elif order[0] =='size':
+        print(len(queue))     #
+    elif order[0] == 'empty':
+        print((queue == [])+0)
+    elif order[0] == "front":
+        if queue:
+            print(queue[0])
+        else:
+            print(-1)
+    elif order[0] == "back":
+        if queue:
+            print(queue[-1])
+        else:
+            print(-1)
