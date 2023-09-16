@@ -1,0 +1,38 @@
+class QueueElement:
+    def __init__(self,data,link = None):
+        self.data = data
+        self.link = link
+class Queue:
+    def __init__(self):
+        self.rear = None    #<--rear:입구(가장 최근에 들어온 elment를 가리킨다.)
+        self.front = None   #<--front: 출구(다음에 나갈 element를 가리킨다.)
+
+    #data를 입력받고 element를 Queue에 추가하는 함수
+    def enque(self,data): #enque==push
+        if self.rear is None:
+            elem = QueueElement(data)
+            self.rear = self.front = elem
+        else:
+            elem = QueueElement(data)
+            self.rear.link = elem
+            self.rear = elem
+
+    def deque(self):
+        if self.front is None:
+            return None
+        #elem이 하나 있을때
+        elif self.rear == self.front:
+            ret_data = self.front.data
+            self.rear = self.front = None
+            return ret_data
+        #elem이 여러개 존재할때
+        else:
+            ret_data = self.front.data
+            self.front = self.front.link
+            return ret_data
+
+q = Queue()
+for i in range(1,6):
+    q.enque(i)
+for _ in range(6):
+    print(q.deque())
