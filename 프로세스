@@ -1,0 +1,17 @@
+# 20230402
+def solution(priorities, location):
+    queue = []
+    # for i in range(len(priorities)):
+    #     if priorities[i] is max(priorities):
+    #         queue.append(priorities[i])
+    while len(queue) == len(priorities):
+        queue.append(max(priorities))
+
+    for i in range(len(priorities)):
+        if priorities[location] == queue[i]:
+            return i
+
+
+priorities = [2, 1, 3, 2]
+location = 2
+print(solution(priorities, location))
