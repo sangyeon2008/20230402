@@ -31,8 +31,22 @@ class Queue:
             self.front = self.front.link
             return ret_data
 
+    def reverse(self):
+        current = self.front
+        previous = None
+        while current:
+            next = current.link
+            current.link = previous
+            current = next
+            previous = current
+        self.rear, self.front = self.front, self.rear
+
+
+
 q = Queue()
+
 for i in range(1,6):
     q.enque(i)
+q.reverse()
 for _ in range(6):
     print(q.deque())
