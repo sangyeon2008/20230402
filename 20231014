@@ -1,0 +1,115 @@
+# 20230402
+# # 20230402
+# def solution(s):
+#     tmp = 0
+#     result = []
+#     s = s.replace("{",' ')
+#     s = s.replace("}",' ')
+#     s = s.split(',')
+#     print(s)
+#     while len(s) != 0:
+#         if len(s[tmp]) is max:
+#             result.append(s[tmp])
+#             for i in range(len(s)):
+#                 if s[i] == s[tmp]:
+#                     s = s.replace(s[i],'')
+#
+#     return int(result) # [2,1,3,4]
+#
+#
+#
+# print(solution("{{2},{2,1},{2,1,3},{2,1,3,4}}"))
+#             #   "2 ,2,1 ,2,1,3 ,2,1,3,4"
+
+
+
+# def parseSet(s:str):
+#     s = s[1:-1]
+#     s = s.replace(",{",' ').replace("}","").replace("{","")
+#     s = s.split(" ")
+#     slist = []
+#     for sl in s:
+#         slist.append(set(map(int, sl.split(","))))
+#     slist.sort(key = lambda x: len(x))
+#
+#     return slist
+#
+# def solution(s):
+#     sl = parseSet(s)
+#     temp = sl[0]
+#     answer = [sl[0]]
+#     for i in range(1,len(sl)):
+#         answer.append((sl[i]-temp))
+#         temp = sl[i]
+#
+#     for i in range(len(answer)):
+#         answer[i] = answer[i].pop()
+#     return answer
+
+
+
+
+# def solution(n, words):
+#     num, turn = 1,1
+#     for i in range(1, len(words)):
+#         num += 1
+#         if num > n:
+#             turn += 1
+#             num = 1
+#         if words[i][0] != words[i-1][-1] or words[i] in words[:i] or len(words[i]) == 1:
+#             return [num, turn]
+#
+#     return [0,0]
+#
+#
+# print(solution(3,["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]))
+
+
+
+
+# def solution(citations):
+#     answer = 0
+#     citations.sort()
+#
+#     for h in range(1,len(citations)+1):
+#         cnt_h = 0
+#         cnt_l = 0
+#         for i in citations:
+#             if i >= h:
+#                 cnt_h = 1
+#             elif i <= h:
+#                 cnt_l += 1
+#             if cnt_h and cnt_l <= h and answer <=h:
+#                 answer = h
+#
+#
+#
+#
+#     return answer
+# c= [3, 0, 6, 1, 5]
+# print(solution(c))
+
+
+# def solution(cacheSize, cities):
+#     seconds = 0
+#     hit = 1
+#     miss = 5
+#     memory = [''] * cacheSize
+#     for city in cities:
+#         city = city.lower()
+#         if city not in memory [:cacheSize]:
+#             seconds += miss
+#             memory.insert(0,city.lower())
+#         else:
+#             seconds += hit
+#             idx = memory.index(city)
+#             memory.insert(0,memory.pop(idx))
+# 
+#     return seconds
+# 
+# 
+# print(solution(3,["Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"]))
+
+
+
+# 42586 기능개발
