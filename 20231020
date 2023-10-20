@@ -1,0 +1,18 @@
+# 20230402
+def solution(progresses, speeds):
+    answer = []
+    while progresses:
+        for i in range(len(progresses)):
+            progresses[i] += speeds[i]
+    
+        result = 0
+        while progresses and 100 <= progresses[0]:
+            result += 1
+            del progresses[0]
+            del speeds[0]
+            
+        if result:
+            answer.append(result)
+        
+    return answer
+solution(print([93, 30, 55],[1, 30, 5]))
