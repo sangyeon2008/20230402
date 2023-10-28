@@ -1,0 +1,81 @@
+# 20230402
+# # (프로그래머스) 무인도 여행 154540
+# def solution(maps):
+#     answer = []
+#     for y in range(len(maps)):
+#         for x in range(len(maps[y])):
+#             if maps[y][x] != "X":
+#                 if x - 1 >= 0 and maps[y][x - 1] != "X":
+#                     maps[y][x] = (maps[y][x]) + int(maps[y][x - 1])
+#
+#                 if y - 1 >= 0 and maps[y - 1][x] != "X":
+#                     maps[y - 1][x] = int(maps[y][x]) + int(maps[y - 1][x])
+#
+#                 else:
+#                     answer.append(maps[y][x])
+#     return answer
+#
+# print(solution(["X591X",
+#                 "X1X5X",
+#                 "X231X",
+#                 "1XXX1"]))
+
+
+# from collections import deque
+#
+#
+# def move(visit, x, y, maps, num):
+#     visit[x][y] = True
+#     eq = deque()
+#     eq.appendleft([x, y])
+#     while eq:
+#         a, b = eq.popleft()
+#         offset = [[a - 1, b], [a + 1, b], [a, b - 1], [a, b + 1]]
+#         for i, j in offset:
+#             if -1 < i < len(maps) and -1 < j < len(maps[i]):
+#                 if not visit[i][j] and maps[i][j] != "X":
+#                     visit[i][j] = True
+#                     num += int(maps[i][j])
+#                     eq.append([i, j])
+#     return num
+#
+#
+# def solution(maps):
+#     answer = []
+#     visit = [[False] * len(maps[0]) for _ in range(len(maps))]
+#     for x in range(len(maps)):
+#         for y in range(len(maps[x])):
+#             if not visit[x][y] and maps[x][y].isdigit():
+#                 n = move(visit, x, y, maps, int(maps[x][y]))
+#                 print(x, y, n)
+#                 answer.append(n)
+#
+#     if len(answer) != 0:
+#         answer.sort()
+#     else:
+#         answer = [-1]
+#     return answer
+
+
+# (1,2) (3,4) (5,6) (7,8)
+
+# def solution(n, a, b):
+#     answer = 0
+#     while a != b:
+#         answer += 1
+#         a, b = (a + 1) // 2, (b + 1) // 2
+#
+#     return answer
+#
+# print(solution(8,4,7))
+
+#삼각달팽이 68645 (프로그래머스)
+def solution(n):
+
+    answer = []
+    return answer
+# [[1],
+#  [2,9],
+#  [3,10,8],
+#  [4,5,6,7]]
+print(solution(4))
