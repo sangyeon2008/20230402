@@ -1,0 +1,21 @@
+# 20230402
+
+#삼각달팽이 68645 (프로그래머스)
+def solution(n):
+    answer = []
+    # for i in range(n):
+    #     n-=1
+    #     for j in range(n):
+    #         answer.append(j)
+    #
+    # return answer
+    boxs = []
+    allboxs = int(((n * (n + 1)) / 2) + 1)
+    for i in range(1, n + 1):
+        boxs.append([0 * j for j in range(i)])
+    return boxs
+# [[1],
+#  [2,9], 1+1 / 4+3+2
+#  [3,10,8], 1+1+1 / 4+3+2+1 / 4+3+1
+#  [4,5,6,7]] 1+1+1+1 / 4+1 / 4+1+1 / 4+1+1+1
+print(solution(4))
