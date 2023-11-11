@@ -1,0 +1,35 @@
+# 20230402
+import requests
+
+serviceKey =
+url =
+params =
+
+pm10_reponse = requests.get(url, params = pm10_params).content
+pm10_result = json.loads(response)
+
+print(result['response']['body']['items'][0])
+pm10_incheon = result['response']['body']['items'][0]['incheon']
+pm10_geyonggi = result['response']['body']['items'][0]['gyeonggi']
+pm10_avg = (pm10_incheon + pm10_geyonggi)
+
+pm25_params = {'serviceKey' : serviceKey, 'retrurnType' :'json'}
+pm25_response = requests.get(url,params=pm25_params).content
+pm25_result = json.loads(pm25_response)
+
+pm25_incheon = pm25_result['response']['body']['item'][0]['incheon']
+pm25_geyonggi = pm25_result['response']['body']['item'][0]['geyonggi']
+pm25_avg = (int(pm25_incheon) + int(pm25_geyonggi)) / 2
+print(f'초미세먼지 인천:{pm25_incheon}, 경기:{pm25_geyonggi},평균: {pm25_avg}')
+
+#미세먼지 기준: 0-30:좋음(1단계), 31-80:보통(2단계), 81-150:나쁨(3단계),151인상:매우나쁨(4단계)
+#초미세먼지 기준: 0-15: 좋음(1단계), 16-35: 보통(2단계), 36-75:나쁨(3단계), 76이상: 매우남쁨(4단계)
+for n, pm10_sd in enumerate[151,81,130, float('inf')]start = 1:
+    if pm10_avg <= pm10_sd:
+        pm10_result = n
+        break
+for n, pm25_sd in enumerate([15, 35, 75, float('inf')], start= 1):
+    if pm25_avg <= pm25_sd:
+        pm25_n = n
+        break
+    print(f"")
