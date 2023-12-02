@@ -1,0 +1,33 @@
+# 20230402
+# 20230402
+# 프로그래머스
+# 기출문제 1번 (250137)
+
+
+def solution(bandage, health, attacks):
+    cnt = 0  # 연속 성공 횟수
+    time = 1
+    hp = health
+
+    while attacks:
+        if time == attacks[0][0]:  # 공격 받는 시간이 되면
+            t, damage = attacks.pop(0)
+            hp -= damage  # 데미지 받음
+            cnt = 0  # 연속 성공 횟수 초기화
+            time += 1  # 시간도 흐름
+            if hp <= 0:  # 죽었으면 끝
+                return -1
+        else:  # 공격 받는 시간이 아니면
+            hp += bandage[1]  # 초당 회복
+            cnt += 1  # 연속 성공 횟수 증가
+            time += 1  # 시간 흐름
+
+            if cnt == bandage[0]:  # 연속 성공 횟수가 다 차면
+                hp += bandage[2]  # 추가 회복
+                cnt = 0  # 연속 성공 횟수 초기화
+
+            if hp > health:  # HP가 최대 체력 넘어가면
+                hp = health  # 최대 최력으로 고정
+
+    return hp
+print(solution([5, 1, 5],30,[[2, 10], [9, 15], [10, 5], [11, 5]]))
