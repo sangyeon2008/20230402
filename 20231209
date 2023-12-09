@@ -1,0 +1,60 @@
+#백준 (터렛)
+#원의 중심이 (a, b)이고 반지름이 r인 원의 방정식은 (x - a)2 + (y - b)2 = r2이에요.
+#sqrt_a = math.sqrt(a) float
+# n = int(input())
+# for _ in range(n):
+#     import math
+#
+#     for _ in range(n):
+#         x1, y1, r1, x2, y2, r2 = map(int, input().split())
+#         distance = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)  # 두 원의 거리 (원의방정식활용)
+#         if distance == 0 and r1 == r2:  # 두 원이 동심원이고 반지름이 같을 때
+#             print(-1)
+#         elif abs(r1 - r2) == distance or r1 + r2 == distance:  #내접, 외접일 때
+#             print(1)
+#         elif abs(r1 - r2) < distance < (r1 + r2):  # 두 원이 서로다른 두 점에서 만날 때
+#             print(2)
+#         else:
+#             print(0)  # 그 외에
+
+# arr = [1,2,3,4]
+# A = (map(lambda x : x**2, arr))
+# print(A)
+
+
+# import sys
+# input = sys.stdin.readline
+#
+# N,M = map(int,input().split())
+# board = []
+# for _ in range(N):
+#     board.append(input().strip())
+# minimum = 2500
+# BW = "BW" * 4
+# WB = "WB" * 4
+# chess1 = [BW,WB]*4
+# chess2 = [WB,BW]*4
+#
+# for x in range(N-7):
+#     for y in range(M-7):
+#         cnt1 = 0
+#         cnt2 = 0
+#         for i in range(8):
+#             for j in range(8):
+#                 if board[x+i][y+j] != chess1[i][j]:
+#                     cnt1 +=1
+#                 if board[x+i][y+j] != chess2[i][j]:
+#                     cnt2 += 1
+#         if minimum > min(cnt1,cnt2):
+#             minimum = min(cnt1,cnt2)
+# print(minimum)
+
+
+
+
+def solution(n):
+    dist = [0] *
+
+
+
+#시소짝꿍 (152996) 프로그래머스
