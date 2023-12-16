@@ -1,0 +1,21 @@
+#시소짝꿍 (152996) 프로그래머스
+def solution(weights):
+    answer = 0
+    Dict = dict()
+    for s in weights:
+        if s in Dict:
+            Dict[s] += 1
+        else:
+            Dict[s]=1
+    List = list(Dict.keys())
+
+    for i in range(len(List)):
+        for j in range(i,len(List)):
+            w1, w2 = List[i], List[j]
+            check = (3 / 4, 2 / 3, 1 / 2)
+            if w1/w2 in check:
+                answer+=1
+
+
+    return answer
+print(solution([100,180,360,100,270]))
