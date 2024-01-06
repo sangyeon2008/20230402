@@ -1,0 +1,18 @@
+#타겟넘버
+def DFS(numbers, target, result):
+    #탈출 조건: numbers에 있는 모든 수를 사용하였다면:
+    #만약 target의 값이랑 내가 만든 result의 값이 서로 같다면:return 1
+    #그게 아니면 : return 0:
+    while numbers != []:
+        if target == result:
+            return 1
+        else:
+            return 0
+
+            cnt += DFS(numbers,target,        ) #+연산
+            cnt += DFS(numbers,target=,       ) #-연산
+        return cnt
+
+def solution(numbers, target):
+    answer = DFS(numbers,target,0,0)
+    return answer
