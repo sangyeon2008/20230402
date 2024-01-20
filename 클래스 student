@@ -3,7 +3,7 @@
 # 학생 리스트 안에는 학생 클래스의 객체가 들어간다. (학생 리스트는 처음에는 빈 리스트)
 # 1. 학생 추가 매서드 : Student 클래스의 생성자의 매개변수에 맞추어 순서대로 값을 직접 입력해서 Student 객체를 생성,
 #      이후 리스트에 추가한다.
-#단, 동아리가 없을 경우 enter를 입력
+# 단, 동아리가 없을 경우 enter를 입력
 # 2. 전체 학생 출력 매서드 : 학생 리스트 안의 Student 객체를 하나씩 Show 매서드 호출을 시행한다.
 # 3. 학생 이름을 입력하여 삭제 매서드
 # 4. 동아리 이름을 입력하여 해당 동아리 소속 학생 전부 출력 매서드
@@ -48,7 +48,6 @@ class student:
             print(f"{grade}0{Class}0{num} {name}")
 
 
-
 # std = student("홍길동",17,1,21,"x")
 # std.Show()
 
@@ -77,18 +76,16 @@ class student:
 # objc = mcls2(10)
 
 
-# 학생관리 프로그램
-# 학생관리 클래스를 만든다.
-# 학생 리스트를 인스턴스 변수로 선언한다.
-# 학생리스트 안에는 학생 클래스와 객체가 들어간다. (학생리스트는 처음에는 반 리스트)
+학생관리 프로그램
+학생관리 클래스를 만든다.
+학생 리스트를 인스턴스 변수로 선언한다.
+학생리스트 안에는 학생 클래스와 객체가 들어간다. (학생리스트는 처음에는 반 리스트)
 
 
 class StudentManager:
     def __init__(self):
         self.studentlist = []
         self.defalut()
-
-
 
     def Addstudents(self):
         print("학생 추가")
@@ -114,7 +111,6 @@ class StudentManager:
             i.Show()
         print("----------------------------------------------------------------------------")
 
-
     def defalut(self):
         self.studentlist.append(student("홍길동", 17, 1, 5, 12))
         self.studentlist.append(student("김준수", 19, 3, 10, 23, "수학"))
@@ -123,34 +119,30 @@ class StudentManager:
     def student_NAME(self):
         # 2. 학생 이름을 입력하고 삭제하는 코드
         student_name = input("삭제하고 싶은 학생: ")
-        for s in range(len(self.studentlist)-1):
+        for s in range(len(self.studentlist) - 1):
             if student_name != self.studentlist[s].name:
                 continue
             del self.studentlist[s]
 
-
-
     def student_CLUB(self):
         # 3. 동아리 이름을 입력하고 해당 동아리 소속 학생만 출력
         student_club = input("해당 동아리 학생 출력: ")
-        for c in range(len(self.studentlist)-1):
+        for c in range(len(self.studentlist) - 1):
             if student_club != self.studentlist[c].club:
                 continue
             self.studentlist[c].Show()
 
-
     def student_CLASS(self):
         # 7. 반을 입력받아서 해당 반에 있는 모든 학생 출력
         student_Class = int(input("해당 반에 있는 학생 출력: "))
-        for C in range(len(self.studentlist)-1):
+        for C in range(len(self.studentlist) - 1):
             if student_Class == self.studentlist[C].Class:
                 self.studentlist[C].Show()
-
 
     while True:
         print("----------------------------------------------------------------------------")
         print("학생정보")
-        StudentManager()
+        Addstudents()
         print()
         ShowAll()
         print()
@@ -159,19 +151,21 @@ class StudentManager:
         student_CLUB()
         print()
         student_CLASS()
-        
 
+# 8. 동아리 클래스, 동아리 관리 클래스 (동아리 이름, 동아리 개설날짜)  (동아리 추가, 동아리삭제, 동아리 조회)
+# 동아리 개설날짜는 ex) "2004.12.08"이런 식으로 값을 받음
+class Club:
+    def __init__(self, club_name, start_date):
+        self.club_name = club_name
+        self.start_date = start_date
 
+class ClubManager:
+    def __init__(self):
+        self.club = []
 
-
-
-
-
-
-
-
-sm = StudentManager()
-sm.ShowAll()
-sm.student_NAME()
-sm.student_CLUB()
-sm.student_CLASS()
+    def Plus_Minus_club(self):
+        a=input("추가하거나 삭제하고 싶은 동아리")
+        if a in club:
+            club.remove(a)
+        else:
+            club.append(a)
