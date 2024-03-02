@@ -105,8 +105,8 @@ class Default_Character_Setting:  # 캐릭터 원형 : 공통 속성값을 가�
 # character.set_stat()
 
 
-class Enemy_Basing(ABC): #
-    def __init__(self,n):
+class Enemy_Basing(ABC):
+    def __init__(self, n):
 
         self.name = n
         self.LV = 1
@@ -129,6 +129,13 @@ class Enemy_Basing(ABC): #
         print("str : %d" % self.str)
         print("int : %d" % self.int)
 
+    def init_stat(self):
+        self.vit *= int(self.LV * 0.7)
+        self.str *= int(self.LV * 0.7)
+        self.int *= int(self.LV * 0.7)
+
+        self.hp = self.hp + self.vit * 5
+
 
     def init_stat(self):
         self.hp = self.hp + self.vit * 5
@@ -142,8 +149,44 @@ class Enemy_Basing(ABC): #
 class Knol(Enemy_Basing):
     def __init__(self):
         super().__init__("Knol")
+        # self.str = 5
+        # self.vit = 4
+        # self.int = 8
+        # self.hp = 3  # 체력
+        # self.mp = 0  # 마나
+        self.vit = 15
+        self.str = 10
+        self.LV_scale()
+
     def action_normal_attack(self):
-        print("")
+        randomed_Num = random.randint(1, 3)
+        action_normal_attack = (5 + (self.str * randomed_Num) * (0.1)) / 2 + randomed_Num
+        return action_normal_attack
+
+    def LV_scale(self):
+        self.vit = int(self.vit * self.LV * 0.3)
+        self.str = int(self.str * self.LV * 0.3)
+        self.int = int(self.int * self.LV * 0.3)
+        super().init_stat()
+
+# class tank(Enemy_Basing):
+#     def __init__(self):
+#         super().__init__("tank")
+#         self.str = 3
+#         self.vit = 8
+#         self.int = 0
+#         self.hp = 5
+#         self.mp = 0
+#         self.LV = 1
+
+    # def action_normal_attack(self):
+    #     randomed_Num = random.randint(1,10)
+    #     action_normal_attack = (4 + (self.str * randomed_Num) * (0.1)) / 2 + randomed_Num
+    #     return action_normal_attack
+
+
+
+
 
 
 test_enemy = Knol()
@@ -167,8 +210,3 @@ test_enemy.show_Info()
 # 가챠?
 # 탈출,아이템 창고
 # 허기, 음식??
-
-
-
-
-
