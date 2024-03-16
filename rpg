@@ -11,6 +11,19 @@ class Default_Character_Setting:  # 캐릭터 원형 : 공통 속성값을 가�
         self.vit = 10  # 생명력
         self.str = 10  # 힘
         self.int = 0  # 지능
+        self.shield = 0 #실드
+
+    def initz(self):
+        self.hp = self.vit * 5
+        self.mp = self.int * 2
+
+    def Show(self):
+        print("현재 플레이어의 스텟")
+        print("hp : %d" % self.hp)
+        print("mp : %d" % self.mp)
+        print("vit : %d" % self.vit)
+        print("str : %d" % self.str)
+        print("int : %d" % self.int)
 
     def set_stat(self):
         init_stat = 30
@@ -19,22 +32,13 @@ class Default_Character_Setting:  # 캐릭터 원형 : 공통 속성값을 가�
         print("str : 힘 스텟입니다. 플레이어의 물리 공격력에 영향을 미칩니다.")
         print("int : 지능 스텟입니다. 플레이어의 마법 공격력및 마나 최대치에 영향을 미칩니다.")
         while True:
-            print("현재 분배된 플레이어의 스텟")
-            print("vit : %d" % self.vit)
-            print("str : %d" % self.str)
-            print("int : %d" % self.int)
             print("분배 가능한 스텟 : %d" % init_stat)
             prefer = input("수정할 스텟이름을 입력해 주세요(수정을 마치려면 \"마침\"을 입력해주세요) : ")
             if prefer == "마침":
                 print("스텟분배 완료")
                 print("현재 분배된 플레이어의 정보")
-                self.hp = self.vit * 5
-                self.mp = self.int * 2
-                print("hp : %d" % self.hp)
-                print("mp : %d" % self.mp)
-                print("vit : %d" % self.vit)
-                print("str : %d" % self.str)
-                print("int : %d" % self.int)
+                self.initz()
+                self.Show()
                 break
             elif not prefer in ["vit", "str", "int"]:
                 print("입력 이름 오류, 다시 입력해 주세요.")
@@ -95,9 +99,9 @@ class Default_Character_Setting:  # 캐릭터 원형 : 공통 속성값을 가�
             print("마나 포인트가 부족해 스킬을 사용할 수 없습니다.")
         else:
             self.mp -= cost
-            self.vit = 2 + self.vit + (self.int * 0.35)
-            print(self.vit)
-            return self.vit
+            heal = int(self.int * 0.35) +2
+            print(heal)
+            return heal
 
 
 # class MyCharacter1(Default_Character_Setting):
@@ -128,13 +132,6 @@ class Enemy_Basing(ABC):
         print("vit : %d" % self.vit)
         print("str : %d" % self.str)
         print("int : %d" % self.int)
-
-    def init_stat(self):
-        self.vit *= int(self.LV * 0.7)
-        self.str *= int(self.LV * 0.7)
-        self.int *= int(self.LV * 0.7)
-
-        self.hp = self.hp + self.vit * 5
 
     def init_stat(self):
         self.hp = self.hp + self.vit * 5
@@ -277,7 +274,168 @@ class Sorcerer(Enemy_Basing):
         super().init_stat()
 
 
-test_enemy1 = Knol()
+class map:
+
+    def __init__(self):
+        self.loadmap = []
+        self.stat = {1:"vit", 2:"str", 3:"int"}
+
+    def set_map(self):
+        load_count = random.randint(2,5)
+        #전투 75%, 휴식 15%, 특전 10%
+        for i in range(load_count):
+            ser = random.randint(1,100)
+            if 90 < ser:
+                r_stat = random.randint(1,3)
+                self.loadmap.append(["특전", self.stat[r_stat], random.randint(1,5)])
+            elif 75 < ser:
+                self.loadmap.append(["휴식"])
+            elif 0 < ser:
+                r_enemy = random.randint(1,3)
+                self.loadmap.append(["전투",r_enemy])
+
+    def Show_map(self):
+        for i in range(len(self.loadmap)):
+            print(self.loadmap[i][0], end = "   ")
+
+    def Show_map_all(self):
+        print(self.loadmap)
+# 1. 플래이어 생성
+# 2. 플래이어 기초스탯 결정
+# 3. 맵 생성
+# 4. 맵 선택
+# 5. 몬스터 생성
+# 6. 전투
+
+class Game:
+    def gene(self,c):
+        mob = []
+
+        for i in range(c):
+            cho = random.randint(1,6)
+            if cho == 1:
+                mob.append(Knol_tough())
+            elif cho == 2:
+                mob.append(Knol_agressive())
+            elif cho == 3:
+                mob.append(Tanker())
+            elif cho == 4:
+                mob.append(Hybrid())
+            elif cho == 5:
+                mob.append(Slime())
+            else:
+                mob.append(Sorcerer())
+        return mob
+
+    def start(self):
+        mychar = Default_Character_Setting() #1.플래이어 생성
+        mychar.set_stat() # 2. 플래이어 기초스탯 결정
+
+        mob = [Knol_tough(),Knol_agressive(),Tanker(),Hybrid(),Slime(),Sorcerer()]
+
+
+        print("캐릭터 생성 완료")
+        print('\n\n\n')
+
+
+        print("맵 생성")
+        mymap = map() # 3. 맵 생성
+        mymap.set_map()
+        mymap.Show_map()
+        print()
+        while True:
+            select = int(input("이동할 길의 번호 선택 : "))-1
+            if select > len(mymap.loadmap):
+                print("입력값 초과, 다시 입력해 주세요")
+            else:
+                break
+
+        res = mymap.loadmap[select]
+        onbattle = []
+        if res[0] == "전투":
+            onbattle = self.gene(res[1])
+
+            while True:
+                for i in onbattle:
+                    print(onbattle)
+                    while True:
+                        damage = 0
+                        shield = 0
+                        heal = 0
+                        i.show_Info()
+                        print("------------------------")
+                        mychar.Show()
+                        print("------------------------")
+                        print("1.일반공격 2.강공격 3.방어생성 4.체력회복")
+                        print('------------------------')
+                        act = int(input("행동을 선택해 주세요 : "))
+                        if act ==1:
+                            damage = mychar.action_normal_attack()
+                            if damage == None or shield == None or heal == None:
+                                continue
+                            print('개체 %s 에게 %d 데미지를 주었다!'% (i.name,damage))
+                            i.hp -= damage
+                        elif act ==2:
+                            damage = mychar.action_skill_attack()
+                            if damage == None or shield == None or heal == None:
+                                continue
+                            print('개체 %s 에게 %d 데미지를 주었다!' % (i.name, damage))
+                            i.hp -= damage
+                        elif act == 3:
+                            shield = mychar.action_skill_shield()
+                            print('입시 방어력 %d 만큼 생성되었다! ' % (shield))
+                            mychar.shield = shield
+                        elif act == 4:
+                            heal = mychar.action_skill_heal()
+                            print('%d 만큼 회복했다!' % (heal))
+                            mychar.hp += heal
+                        else:
+                            print("입력값 오류, 다시 입력해 주세요")
+                            continue
+
+                        if i.hp <= 0:
+                            print("개체 %s를 쓰려뜨렸다!" % (i.name))
+                            # print(onbattle)
+                            break
+
+                        if len(onbattle) == 0:
+                            print("모든 몬스터를 쓰려뜨렸다.")
+                            exit(0)
+
+                        damage = i.action_normal_attack()
+                        print("개체 %s의 공격, %d 데미지를 입었다" % (i.name,damage))
+                        if mychar.shield - damage < 0:
+                            mychar.hp += mychar.shield - damage
+                        else:
+                            mychar.shield -= damage
+
+                        if mychar.hp <= 0:
+                            print("치명상에 당했다.")
+                            print("game over")
+                            exit(0)
+
+        elif res[0] == "휴식":
+            print("체력과 마나가 최대로 회복되었습니다!\n")
+            mychar.initz()
+        elif res[0] == "특전":
+            print("축복을 받아 %s 스탯이 %d 만큼 증가했습니다!"% (res[1],res[2]))
+            if res[1] == "vit":
+                mychar.vit += res[2]
+            elif res[1] == "str":
+                mychar.str += res[2]
+            elif res[1] == "int":
+                mychar.int += res[2]
+            mychar.Show()
+            print()
+
+mygame = Game()
+mygame.start()
+
+
+
+
+
+test_enemy1 = Knol_tough()
 test_enemy2 = Tanker()
 test_enemy3 = Hybrid()
 test_enemy1.show_Info()
